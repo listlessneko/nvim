@@ -45,7 +45,13 @@ return {
         map("<leader>rn", vim.lsp.buf.rename, "Rename all references" )
 
         map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
+
         map("K", vim.lsp.buf.hover, "Hover Documentation")
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+          -- border = "single",
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        })
+
         map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
         map("gD", vim.lsp.buf.declaration, "Goto Declaration")
 

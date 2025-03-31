@@ -1,3 +1,6 @@
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 return {
   jsonls = {
     settings = {
@@ -41,7 +44,7 @@ return {
   vimls = {
     filetypes = { "vim" },
   },
-  tsserver = {},
+  ts_ls = {},
   -- gopls = {},
   pyright = {},
   -- golangci_lint_ls = {},
@@ -57,4 +60,14 @@ return {
   -- },
 
   zls = {},
+  html = {
+    cmd = { "vscode-html-language-server", "--stdio" },
+    filetypes = { "html" },
+    capabilities = capabilities,
+  },
+  cssls = {
+    cmd = { "vscode-css-language-server", "--stdio" },
+    filetypes = { "css", "scss", "less" },
+    capabilities = capabilities,
+  },
 }

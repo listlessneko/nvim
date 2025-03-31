@@ -32,8 +32,15 @@
       local icons = require('listlessneko.config.icons')
         telescope.setup({
           file_ignore_patterns = { "%.git/." },
-          -- borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
           defaults = {
+            border = true,  -- Enable border
+            -- borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
+            -- borderchars = { "█", "█", "▄", "█", "█", "█", "▀", "█" },
+            -- borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+            -- borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
+            -- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },  -- Custom border characters
+            winblend = 10,
             mappings = {
               i = {
                 ["<esc>"] = actions.close,
@@ -67,6 +74,7 @@
               "--smart-case",
               "--hidden",
               "--glob=!.git/",
+              -- "--no-ignore",
             },
           },
           pickers = {

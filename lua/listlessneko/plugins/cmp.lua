@@ -20,7 +20,7 @@ return {
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-    -- local lspkind = require("lspkind")
+    local lspkind = require("lspkind")
 
     local kind_icons = {
       Text = "",
@@ -97,6 +97,7 @@ return {
       },
       sources = {
         { name = "copilot" },
+        { name = "nvim_lsp_signature_help"},
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
@@ -109,6 +110,9 @@ return {
         { name = "tmux" },
       },
       formatting = {
+        fields = { "kind", "abbr", "menu" },
+        expandable_indicator = true,
+
         format = function(entry, vim_item)
           local lspkind_ok, lspkind = pcall(require, "lspkind")
           if not lspkind_ok then

@@ -28,6 +28,9 @@ vim.keymap.set('v', '>', '>gv', {desc = 'Indent right'})
 -- Yank from cursor to eol
 vim.keymap.set('n', 'Y', 'yg$', {desc = 'Yank from cursor to eol'})
 
+-- Highlight entire file
+vim.keymap.set('n', '<leader>a', 'ggVG', {desc = 'Highlight entire file'})
+
 -- Keeps cursor in the same spot when joining current line to the next, scrolling up or down the page, or scrolling up and down a word search, respectively
 vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -55,7 +58,7 @@ vim.keymap.set('v', '<leader>d', '"_d', {desc = 'To the void!'})
 vim.keymap.set('n', 'Q', '<nop>', {desc = 'Just don\'t do it.'})
 
 -- Option to replace current word
-vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Replace current word'})
+vim.keymap.set('n', '<leader>re', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Replace current word'})
 
 -- increament/decrement numbers
 vim.keymap.set('n', '<leader><C-a>', '<C-a>', {desc = 'Increment number'})
@@ -78,4 +81,4 @@ vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', {desc = 'Open current buf
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', {silent = true,  desc = 'Disables highlighting after searching for word'})
 
 -- Telescope
-vim.keymap.set('n', '<C-s>', ':Telescope current_buffer_fuzzy_find<CR>', { desc = 'Search within current buffer'})
+vim.keymap.set('n', '<leader>s', ':Telescope current_buffer_fuzzy_find<CR>', { desc = 'Search within current buffer'})
