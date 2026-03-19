@@ -5,11 +5,24 @@ local M = {}
 M.telescope_git_or_file = function()
   local path = vim.fn.expand("%:p:h")
   local git_dir = vim.fn.finddir(".git", path .. ";")
+  local opts = {
+    hidden = true,
+    no_ignore = true,
+    no_ignore_parent = true,
+    file_ignore_patterns = {
+      "%.env$",             -- Ignore .env files
+      "^.git/",             -- Ignore .git directory
+      "node_modules/",      -- Ignore node_modules
+      "config/",            -- Ignore config directory
+      "%.gitignore$"        -- Ignore .gitignore itself
+    },
+    respect_gitignore = false,
+  }
   if #git_dir > 0 then
-    require("telescope.builtin").git_files()
-  else
-    require("telescope.builtin").find_files()
+    local git_root = vim.fn.fnamemodify(git_dir, ":h")
+    opts.cwd = git_root
   end
+    require("telescope.builtin").find_files(opts)
 end
 
 M.toggle_set_color_column = function()

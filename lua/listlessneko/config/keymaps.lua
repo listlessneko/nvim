@@ -82,3 +82,6 @@ vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', {silent = true,  desc = 'Disable
 
 -- Telescope
 vim.keymap.set('n', '<leader>s', ':Telescope current_buffer_fuzzy_find<CR>', { desc = 'Search within current buffer'})
+
+-- Run visual selection in Python
+vim.keymap.set('v', '<leader>t', ':w !python3<CR>', { desc = 'Run selected Python code' })
